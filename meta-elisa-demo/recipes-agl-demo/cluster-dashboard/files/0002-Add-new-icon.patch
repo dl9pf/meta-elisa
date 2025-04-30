@@ -1,22 +1,24 @@
-From 8deeb3bb4bfffb276ea5fdb82370c546c3a7ad5f Mon Sep 17 00:00:00 2001
+From 022add0777188021df8bcda431106876637d00ad Mon Sep 17 00:00:00 2001
 From: Sudip Mukherjee <sudip.mukherjee@codethink.co.uk>
 Date: Fri, 18 Nov 2022 21:00:25 +0000
-Subject: [PATCH] Add new icon and use can signals to corrupt
+Subject: [PATCH 3/3] Add new icon and use can signals to corrupt
+
+Upstream-Status: Inappropriate
 
 Signed-off-by: Sudip Mukherjee <sudip.mukherjee@codethink.co.uk>
 ---
  app/ValueSource.qml    | 11 +++---
- app/cluster-gauges.qml | 22 ++++++++++++
+ app/cluster-gauges.qml | 21 +++++++++++
  app/images/danger.svg  | 79 ++++++++++++++++++++++++++++++++++++++++++
  app/images/images.qrc  |  1 +
- 4 files changed, 109 insertions(+), 4 deletions(-)
+ 4 files changed, 108 insertions(+), 4 deletions(-)
  create mode 100644 app/images/danger.svg
 
 diff --git a/app/ValueSource.qml b/app/ValueSource.qml
-index 511a2a1..cc35817 100644
+index 144dc2f..3dd944d 100644
 --- a/app/ValueSource.qml
 +++ b/app/ValueSource.qml
-@@ -91,15 +91,15 @@ Item {
+@@ -95,15 +95,15 @@ Item {
      property bool cruiseSet: false
      property bool laneDepartureWarnEnabled: false
      property bool displayNumericSpeeds: true
@@ -35,7 +37,7 @@ index 511a2a1..cc35817 100644
      }
  
      Connections {
-@@ -118,6 +118,7 @@ Item {
+@@ -122,6 +122,7 @@ Item {
  	    VehicleSignals.subscribe("Vehicle.Cabin.SteeringWheel.Switches.CruiseCancel")
  	    VehicleSignals.subscribe("Vehicle.Cabin.SteeringWheel.Switches.LaneDepartureWarning")
  	    VehicleSignals.subscribe("Vehicle.Cabin.SteeringWheel.Switches.Info")
@@ -43,7 +45,7 @@ index 511a2a1..cc35817 100644
  	    VehicleSignals.get("Vehicle.Cabin.Infotainment.HMI.DistanceUnit")
  	    VehicleSignals.subscribe("Vehicle.Cabin.Infotainment.HMI.DistanceUnit")
  	}
-@@ -164,7 +165,9 @@ Item {
+@@ -168,7 +169,9 @@ Item {
              } else if (path === "Vehicle.Cabin.SteeringWheel.Switches.LaneDepartureWarning" && value === "true") {
                  valueSource.laneDepartureWarnEnabled = !valueSource.laneDepartureWarnEnabled
              } else if (path === "Vehicle.Cabin.SteeringWheel.Switches.Info" && value === "true") {
@@ -55,18 +57,10 @@ index 511a2a1..cc35817 100644
                  if (value === "km") {
                      valueSource.mphDisplay = false
 diff --git a/app/cluster-gauges.qml b/app/cluster-gauges.qml
-index e4c299b..d70db47 100644
+index 3c5278a..22524a0 100644
 --- a/app/cluster-gauges.qml
 +++ b/app/cluster-gauges.qml
-@@ -389,6 +389,7 @@ ApplicationWindow {
-             //y: (parent.height - height) / 2
-             width: parent.width * 0.9
-             height: width
-+            visible: valueSource.displaySpeed === true
- 
-             maximumValue: valueSource.mphDisplay ? 140 : 220
-             value: valueSource.kph * valueSource.speedScaling
-@@ -483,6 +484,27 @@ ApplicationWindow {
+@@ -447,6 +447,27 @@ ApplicationWindow {
          }
      }
  
@@ -191,5 +185,5 @@ index 6b4f2d2..86e4572 100644
      </qresource>
  </RCC>
 -- 
-2.30.2
+2.43.0
 

@@ -1,7 +1,9 @@
-From 54e1af2672e66c17862b35c37f32cf74aafaf0a0 Mon Sep 17 00:00:00 2001
+From 86d1cd6a5a9eacbdb1ea5aab4c85ffbe377ee54a Mon Sep 17 00:00:00 2001
 From: Sudip Mukherjee <sudip.mukherjee@codethink.co.uk>
 Date: Sat, 17 Oct 2020 23:28:04 +0100
-Subject: [PATCH] test demo
+Subject: [PATCH 2/3] test demo
+
+Upstream-Status: Inappropriate
 
 Signed-off-by: Sudip Mukherjee <sudip.mukherjee@codethink.co.uk>
 ---
@@ -10,7 +12,7 @@ Signed-off-by: Sudip Mukherjee <sudip.mukherjee@codethink.co.uk>
  2 files changed, 148 insertions(+), 7 deletions(-)
 
 diff --git a/app/ValueSource.qml b/app/ValueSource.qml
-index 2c48438..1f36025 100644
+index ce2a821..144dc2f 100644
 --- a/app/ValueSource.qml
 +++ b/app/ValueSource.qml
 @@ -85,7 +85,11 @@ Item {
@@ -25,7 +27,7 @@ index 2c48438..1f36025 100644
      property real temperature: 0.6
      property bool cruiseEnabled: false
      property bool cruiseSet: false
-@@ -184,6 +188,12 @@ Item {
+@@ -179,6 +183,12 @@ Item {
          running: runAnimation
          loops: 1
  
@@ -38,7 +40,7 @@ index 2c48438..1f36025 100644
          // We want a small pause at the beginning, but we only want it to happen once.
          PauseAnimation {
              duration: 1000
-@@ -204,6 +214,21 @@ Item {
+@@ -199,6 +209,21 @@ Item {
                  property: "startUp"
                  value: true
              }
@@ -60,7 +62,7 @@ index 2c48438..1f36025 100644
              PauseAnimation {
                  duration: 1000
              }
-@@ -212,6 +237,26 @@ Item {
+@@ -207,6 +232,26 @@ Item {
                  property: "startUp"
                  value: false
              }
@@ -87,7 +89,7 @@ index 2c48438..1f36025 100644
  
              ParallelAnimation {
                  NumberAnimation {
-@@ -231,6 +276,13 @@ Item {
+@@ -226,6 +271,13 @@ Item {
                      duration: 3000
                  }
              }
@@ -101,7 +103,7 @@ index 2c48438..1f36025 100644
              ParallelAnimation {
                  // We changed gears so we lost a bit of speed.
                  NumberAnimation {
-@@ -250,6 +302,13 @@ Item {
+@@ -245,6 +297,13 @@ Item {
                      duration: 600
                  }
              }
@@ -115,7 +117,7 @@ index 2c48438..1f36025 100644
              ParallelAnimation {
                  NumberAnimation {
                      target: valueSource
-@@ -266,6 +325,13 @@ Item {
+@@ -261,6 +320,13 @@ Item {
                      duration: 3000
                  }
              }
@@ -129,7 +131,7 @@ index 2c48438..1f36025 100644
              ParallelAnimation {
                  // We changed gears so we lost a bit of speed.
                  NumberAnimation {
-@@ -334,6 +400,19 @@ Item {
+@@ -329,6 +395,19 @@ Item {
                  }
              }
  
@@ -149,7 +151,7 @@ index 2c48438..1f36025 100644
              // Slow down a bit
              ParallelAnimation {
                  NumberAnimation {
-@@ -351,6 +430,12 @@ Item {
+@@ -346,6 +425,12 @@ Item {
                      duration: 6000
                  }
              }
@@ -162,7 +164,7 @@ index 2c48438..1f36025 100644
  
              // Turn signal on
              PropertyAction {
-@@ -447,6 +532,12 @@ Item {
+@@ -442,6 +527,12 @@ Item {
                      duration: 5000
                  }
              }
@@ -175,8 +177,8 @@ index 2c48438..1f36025 100644
  
              // Third to second gear.
              NumberAnimation {
-@@ -481,6 +572,12 @@ Item {
-                 to: 6.5
+@@ -476,6 +567,12 @@ Item {
+                 to: 6500
                  duration: 600
              }
 +            // Turn signal on
@@ -188,7 +190,7 @@ index 2c48438..1f36025 100644
  
              // Second to first gear.
              ParallelAnimation {
-@@ -499,9 +596,53 @@ Item {
+@@ -494,9 +591,53 @@ Item {
                      duration: 4500
                  }
              }
@@ -245,10 +247,10 @@ index 2c48438..1f36025 100644
          }
      }
 diff --git a/app/cluster-gauges.qml b/app/cluster-gauges.qml
-index d70db47..b9aded9 100644
+index f4a83ea..3c5278a 100644
 --- a/app/cluster-gauges.qml
 +++ b/app/cluster-gauges.qml
-@@ -117,7 +117,7 @@ ApplicationWindow {
+@@ -114,7 +114,7 @@ ApplicationWindow {
                      height: parent.height * 0.75
  
                      direction: Qt.LeftArrow
@@ -257,7 +259,7 @@ index d70db47..b9aded9 100644
                  }
              }
  
-@@ -207,7 +207,7 @@ ApplicationWindow {
+@@ -204,7 +204,7 @@ ApplicationWindow {
                  border.color: "grey"
  
                  Image {
@@ -266,7 +268,7 @@ index d70db47..b9aded9 100644
                      anchors.verticalCenter: parent.verticalCenter
                      anchors.horizontalCenter: parent.horizontalCenter
                      width: height
-@@ -269,7 +269,7 @@ ApplicationWindow {
+@@ -266,7 +266,7 @@ ApplicationWindow {
                  border.color: "grey"
  
                  Image {
@@ -275,7 +277,7 @@ index d70db47..b9aded9 100644
                      anchors.verticalCenter: parent.verticalCenter
                      anchors.horizontalCenter: parent.horizontalCenter
                      width: height
-@@ -288,7 +288,7 @@ ApplicationWindow {
+@@ -285,7 +285,7 @@ ApplicationWindow {
                  border.color: "grey"
  
                  Image {
@@ -284,7 +286,7 @@ index d70db47..b9aded9 100644
                      anchors.verticalCenter: parent.verticalCenter
                      anchors.horizontalCenter: parent.horizontalCenter
                      width: height
-@@ -371,7 +371,7 @@ ApplicationWindow {
+@@ -368,7 +368,7 @@ ApplicationWindow {
                      height: parent.height * 0.75
  
                      direction: Qt.RightArrow
@@ -294,5 +296,5 @@ index d70db47..b9aded9 100644
              }
          }
 -- 
-2.30.2
+2.43.0
 
